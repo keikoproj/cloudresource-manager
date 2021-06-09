@@ -20,7 +20,7 @@ To run this controller in a cluster run the following steps:
 - make docker-build
 - docker tag controller:latest username/cf:v1 or docker-artifactory-path:/cf:v1
 - docker push <username>/cf:v1  or docker push docker-artifactory-path:/cf:v1
-- update the docker image name in: cfn-controller/config/manager/manager.yaml
+- update the docker image name in makefile
 - make deploy
 
 
