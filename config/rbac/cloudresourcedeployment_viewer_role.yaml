@@ -1,0 +1,20 @@
+# permissions to do viewer cloudresourcedeployments.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: cloudresourcedeployment-viewer-role
+rules:
+- apiGroups:
+  - cloudresource.keikoproj.io
+  resources:
+  - cloudresourcedeployments
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - cloudresource.keikoproj.io
+  resources:
+  - cloudresourcedeployments/status
+  verbs:
+  - get

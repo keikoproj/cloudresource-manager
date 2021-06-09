@@ -1,0 +1,13 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::<accnt>:role/<master_role>"
+      },
+      "Condition": {"StringEquals": {"sts:ExternalId": "<external_id>"}},
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}

@@ -1,0 +1,157 @@
+
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.2.4
+  creationTimestamp: null
+  name: cloudresourcedeployments.cloudresource.keikoproj.io
+spec:
+  group: cloudresource.keikoproj.io
+  names:
+    kind: CloudResourceDeployment
+    listKind: CloudResourceDeploymentList
+    plural: cloudresourcedeployments
+    singular: cloudresourcedeployment
+  scope: Namespaced
+  validation:
+    openAPIV3Schema:
+      description: CloudResourceDeployment is the Schema for the cloudresourcedeployments
+        API
+      properties:
+        apiVersion:
+          description: 'APIVersion defines the versioned schema of this representation
+            of an object. Servers should convert recognized schemas to the latest
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+          type: string
+        kind:
+          description: 'Kind is a string value representing the REST resource this
+            object represents. Servers may infer this from the endpoint the client
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+          type: string
+        metadata:
+          type: object
+        spec:
+          description: CloudResourceDeploymentSpec defines the desired state of CloudResourceDeployment
+          properties:
+            cloudformation:
+              description: 'Important: Run "make" to regenerate code after modifying
+                this file'
+              properties:
+                assumeroleprovider:
+                  properties:
+                    acctnum:
+                      description: Optional AccountID, Here we would only accept the
+                        account number in the implementation and we would construct
+                        the rolearn dynamically to keep it secure.
+                      type: string
+                    duration:
+                      description: Expiry duration of the STS credentials. Defaults
+                        to 15 minutes if not set.
+                      format: int64
+                      type: integer
+                    env:
+                      description: ' Optional Environment, this field is required
+                        (along with AccountId) to generate the ExternalID in the scenario
+                        where it is not passed explicitly.'
+                      type: string
+                    expirywindow:
+                      description: "ExpiryWindow will allow the credentials to trigger
+                        refreshing prior to the credentials actually expiring. This
+                        is beneficial so race conditions with expiring credentials
+                        do not cause request to fail unexpectedly due to ExpiredTokenException
+                        exceptions. \n So a ExpiryWindow of 10s would cause calls
+                        to IsExpired() to return true 10 seconds before the credentials
+                        are actually expired. \n If ExpiryWindow is 0 or less it will
+                        be ignored."
+                      format: int64
+                      type: integer
+                    externalID:
+                      description: Optional ExternalID to pass along, defaults to
+                        nil if not set.
+                      type: string
+                    policy:
+                      description: The policy plain text must be 2048 bytes or shorter.
+                        However, an internal conversion compresses it into a packed
+                        binary format with a separate limit. The PackedPolicySize
+                        response element indicates by percentage how close to the
+                        upper size limit the policy is, with 100% equaling the maximum
+                        allowed size.
+                      type: string
+                    roleSessionName:
+                      description: Session name, if you wish to reuse the credentials
+                        elsewhere.
+                      type: string
+                    rolearn:
+                      description: Role to be assumed.
+                      type: string
+                    serialNumber:
+                      description: The identification number of the MFA device that
+                        is associated with the user who is making the AssumeRole call.
+                        Specify this value if the trust policy of the role being assumed
+                        includes a condition that requires MFA authentication. The
+                        value is either the serial number for a hardware device (such
+                        as GAHT12345678) or an Amazon Resource Name (ARN) for a virtual
+                        device (such as arn:aws:iam::123456789012:mfa/user).
+                      type: string
+                    servicerolearn:
+                      description: ServiceRole that Cloudformation will assume. This
+                        is to have more security.
+                      type: string
+                  required:
+                  - env
+                  type: object
+                parameters:
+                  additionalProperties:
+                    type: string
+                  description: 'Important: Run "make" to regenerate code after modifying
+                    this file'
+                  type: object
+                region:
+                  type: string
+                stackname:
+                  type: string
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+                template:
+                  type: string
+                timeout:
+                  type: integer
+              type: object
+          type: object
+        status:
+          description: CloudResourceDeploymentStatus defines the observed state of
+            CloudResourceDeployment
+          properties:
+            changesetname:
+              type: string
+            checksum:
+              type: string
+            message:
+              type: string
+            startedAt:
+              format: date-time
+              type: string
+            status:
+              description: 'Important: Run "make" to regenerate code after modifying
+                this file'
+              type: string
+          required:
+          - changesetname
+          - checksum
+          type: object
+      type: object
+  version: v1alpha1
+  versions:
+  - name: v1alpha1
+    served: true
+    storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []
