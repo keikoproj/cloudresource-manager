@@ -26,7 +26,7 @@ clean:
 
 # Run tests
 test: manifests generate
-	go test -v ${PKGS} -coverprofile coverage.out
+	go test -v ${PKGS} -coverprofile coverage.txt
 
 .PHONY: cover
 cover: test
