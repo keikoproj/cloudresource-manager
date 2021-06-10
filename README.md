@@ -1,7 +1,8 @@
-# CFN-Controller
+# Cloudresource-Manager
+![push](https://github.com/keikoproj/cloudresource-manager/workflows/push/badge.svg)
+[![codecov](https://codecov.io/gh/keikoproj/cloudresource-manager/branch/master/graph/badge.svg?token=IJbjmSBliL)](https://codecov.io/gh/keikoproj/cloudresource-manager)
 
-[![Build Status][BuildStatusImg]][BuildMasterURL]
-[![Code Coverage][CodecovImg]][CodecovURL]
+
 
 <h3> Overview </h3>
 The Cloud Resource Controller provides a mechanism to deploy AWS resources needed for Kubernetes clusters (cluster prerequisites) and applications running on these clusters. The Cloud Resource Controller leverages Argo CD which is a declarative, GitOps continuous delivery tool for Kubernetes.  
