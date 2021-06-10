@@ -1,0 +1,20 @@
+coverage:
+  range: "40...60"
+
+ignore:
+  - "**/zz_generated.*"
+  - "bin"
+  - "config"
+  - "hack"
+  - "CHANGELOG.md"
+  - "Dockerfile"
+  - "Jenkinsfile*"
+  - "README.md"
+  - "cover.out"
+  - "docs"
+  - "entrypoint.sh"
+  - "examples"
+  - "features"
+  - "test-*"
+  - "*.yaml"
+  - "**/fake.go"
