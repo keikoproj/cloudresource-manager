@@ -1,6 +1,6 @@
 module github.com/keikoproj/cloudresource-manager
 
-go 1.13
+go 1.19
 
 require (
 	github.com/aws/aws-sdk-go v1.30.13
